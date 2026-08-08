@@ -1,6 +1,6 @@
 # pstack app template
 
-แม่แบบสำหรับสร้าง app ใหม่บนฐาน [pstack](https://github.com/monthop-gmail/pstack) —
+แม่แบบสำหรับสร้าง app ใหม่บนฐาน [pstack](https://github.com/willpower-institute/pstack) —
 app repo เก็บเฉพาะ addons ของตัวเอง แล้ว **pin pstack เป็น tag** (`PSTACK_REF`)
 
 ## เริ่ม app ใหม่
@@ -15,7 +15,7 @@ grep -rl app_addons --exclude-dir=.git . | xargs sed -i "s/app_addons/$NEW/g"
 ```
 
 3. เปลี่ยนชื่อโมดูลตัวอย่าง `demo` เป็นโมดูลจริงของคุณ (ดูวิธีเขียนโมดูลใน
-   [MODULE_GUIDE](https://github.com/monthop-gmail/pstack/blob/main/docs/MODULE_GUIDE.md))
+   [MODULE_GUIDE](https://github.com/willpower-institute/pstack/blob/main/docs/MODULE_GUIDE.md))
 4. `cp .env.example .env` แล้วตั้งค่า
 
 ## Dev บนเครื่อง
@@ -23,7 +23,7 @@ grep -rl app_addons --exclude-dir=.git . | xargs sed -i "s/app_addons/$NEW/g"
 ต้องมี pstack checkout ไว้ข้างๆ (pin tag เดียวกับ `PSTACK_REF` ใน .env.example):
 
 ```bash
-git clone --branch v0.1.0 https://github.com/monthop-gmail/pstack.git ../pstack
+git clone --branch v0.1.0 https://github.com/willpower-institute/pstack.git ../pstack
 python3 -m venv .venv && .venv/bin/pip install -e "../pstack[dev]"
 
 export PSTACK_ADDONS_PATHS=../pstack/addons,app_addons
@@ -50,5 +50,5 @@ workflow จะ clone pstack ตาม `PSTACK_REF` ใน `.env.example` แล
 
 - **ห้ามแก้โค้ด pstack ใน repo นี้** — อยากได้อะไรจาก kernel ให้ไปทำฝั่ง pstack แล้วออก tag ใหม่
 - อัปเกรด `PSTACK_REF` เป็นรอบๆ ใน PR เดียว อ่าน breaking changes จาก
-  [CHANGELOG ของ pstack](https://github.com/monthop-gmail/pstack/blob/main/CHANGELOG.md) ก่อนเสมอ
+  [CHANGELOG ของ pstack](https://github.com/willpower-institute/pstack/blob/main/CHANGELOG.md) ก่อนเสมอ
 - deploy บนเซิร์ฟเวอร์รวม: เปิด network `odoo-public` ใน docker-compose.yml เพื่ออยู่หลัง Caddy กลาง
