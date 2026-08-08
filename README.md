@@ -40,13 +40,11 @@ export PSTACK_ADDONS_PATHS=../pstack/addons,app_addons
 docker compose up -d --build
 ```
 
-Dockerfile จะ clone pstack ตาม `PSTACK_REF` ใน `.env` — ถ้า pstack ยังเป็น private repo
-ให้ใส่ `GIT_TOKEN` (fine-grained PAT ที่อ่าน repo pstack ได้) ใน `.env` ด้วย
+Dockerfile จะ clone pstack ตาม `PSTACK_REF` ใน `.env`
 
 ## CI
 
-workflow จะ clone pstack ตาม `PSTACK_REF` ใน `.env.example` — สำหรับ private repo
-ต้องเพิ่ม secret ชื่อ **`PSTACK_CLONE_TOKEN`** (PAT อ่าน pstack ได้) ใน Settings → Secrets
+workflow จะ clone pstack ตาม `PSTACK_REF` ใน `.env.example` แล้วรันเทสอัตโนมัติ
 
 ## กติกาสำคัญ
 
