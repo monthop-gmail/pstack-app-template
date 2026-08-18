@@ -42,6 +42,13 @@ docker compose up -d --build
 
 Dockerfile จะ clone pstack ตาม `PSTACK_REF` ใน `.env`
 
+> ⚠️ **image มีแค่ `<app>_addons` ไม่ใช่ทั้ง repo** — ถ้า app อ่านไฟล์อื่นตอน runtime
+> (config YAML, seed data, asset, policy) ต้องเพิ่ม `COPY <dir> /app/<dir>` ใน Dockerfile ด้วย
+> ไม่งั้นบูตผ่าน (healthz เขียว โมดูลขึ้นครบ) แต่พังตอนมีงานเข้าจริงด้วย `FileNotFoundError`
+>
+> วิธีกันพลาด: ให้โมดูลโหลด config เข้ามาตอน `on_install` (config หาย = boot ไม่ผ่านทันที
+> ดีกว่าเป็น 500 กลางทาง) และเขียนเทสที่อ่าน Dockerfile ตรวจว่า `COPY` ครบทุกโฟลเดอร์ที่โค้ดอ่าน
+
 ## CI
 
 workflow จะ clone pstack ตาม `PSTACK_REF` ใน `.env.example` แล้วรันเทสอัตโนมัติ
